@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <div class="container-sm">
+      <p class="h1">제주도 맛집 찾기</p>
+      <p>
+        2022년 8월 22일까지 카카오맵에 작성된 음식점 후기를 통해 조건에 맞는 맛집을 추천해드립니다.
+      </p>
+      <br />
+      <form action="{{url_for('search')}}" method="POST">
+        <div class="col-md-4">
+          <label for="menu" class="form-label">메뉴</label>
+          <select class="form-select" id="selmenu" required name="menu">
+            <option selected>메뉴를 선택하세요</option>
+            <option value="한식">한식</option>
+            <option value="양식">양식</option>
+            <option value="중식">중식</option>
+            <option value="일식">일식</option>
+            <option value="아시아/기타">아시아/기타</option>
+            <option value="분식">분식</option>
+            <option value="치킨/피자/햄버거">치킨/피자/햄버거</option>
+            <option value="카페/디저트">카페/디저트</option>
+            <option value="해산물">해산물</option>
+            <option value="고기/구이/족발/보쌈">고기/구이/족발/보쌈</option>
+            <option value="뷔페">뷔페</option>
+            <option value="국수">국수</option>
+            <option value="주점">주점</option>
+          </select>
+        </div>
+        <br />
+        <div class="col-md-4">
+          <label for="location" class="form-label">위치</label>
+          <select class="form-select" id="selloc" required name="location">
+            <option selected>위치를 선택하세요</option>
+            <option value="구좌">구좌</option>
+            <option value="남원">남원</option>
+            <option value="대정">대정</option>
+            <option value="서귀포">서귀포</option>
+            <option value="성산">성산</option>
+            <option value="안덕">안덕</option>
+            <option value="애월">애월</option>
+            <option value="우도">우도</option>
+            <option value="제주">제주</option>
+            <option value="조천">조천</option>
+            <option value="표선">표선</option>
+            <option value="한경">한경</option>
+            <option value="한림">한림</option>
+          </select>
+        </div>
+        <br />
+        <br />
+        <fieldset class="row mb-3">
+          <legend class="col-form-label col-sm-2 pt-0">유아동반여부</legend>
+          <div class="col-sm-10">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" required name="nokidszone" value="n" checked>
+              <label class="form-check-label">유아가능</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" required name="nokidszone" value="y">
+              <label class="form-check-label">노키즈존</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" required name="nokidszone" value="n,y,unknown">
+              <label class="form-check-label">상관없음</label>
+            </div>
+          </div>
+        </fieldset>
+        <br />
+        <fieldset class="row mb-3">
+          <legend class="col-form-label col-sm-2 pt-0">예약가능여부</legend>
+          <div class="col-sm-10">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" required name="booking" value="y" checked>
+              <label class="form-check-label">예약가능</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" required name="booking" value="n">
+              <label class="form-check-label">예약불가</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" required name="booking" value="n,y,unknown">
+              <label class="form-check-label">상관없음</label>
+            </div>
+          </div>
+        </fieldset>
+        <br />
+        <fieldset class="row mb-3">
+          <legend class="col-form-label col-sm-2 pt-0">후기작성연도</legend>
+          <div class="col-sm-10">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" required name="reviewyear" value="2022">
+              <label class="form-check-label">2022년</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" required name="reviewyear" value="2021">
+              <label class="form-check-label">2021년</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" required name="reviewyear" value="2020">
+              <label class="form-check-label">2020년</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" required name="reviewyear" value="2019">
+              <label class="form-check-label">2019년 이하</label>
+            </div>
+          </div>
+          <p><small>⚠ 현재는 맛집을 찾는데 참고할 후기연도를 모두 선택해야지만 결과가 나타납니다.</small></p>
+        </fieldset>
+        <br />
+        <button type="submit" class="btn btn-primary">찾기</button>
+      </form>  
+    </div>
+  </body>
+
+</html>

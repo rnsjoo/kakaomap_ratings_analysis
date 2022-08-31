@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <div class="container-sm">
+      <p class="h1">제주도 맛집 찾기</p>
+      <p>아래와 같이 찾았습니다! 순서대로 방문해보는 건 어떨까요?</p>
+      <br />
+      {% for item in data %}
+      <p>{{loop.index}}. {{item}}</p>
+      {% endfor %}
+      <br />
+      <br />
+      <br />
+      <p><a href="{{url_for('index')}}">이전 페이지로 돌아가기</a></p>  
+    </div>
+  </body>
+
+</html>
