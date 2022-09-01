@@ -26,7 +26,7 @@ def create_app():
         location = request.form.getlist("location")
         nokidszone = request.form.getlist("nokidszone")[0].split(',')
         booking = request.form.getlist("booking")[0].split(',')
-        reviewyear = request.form.getlist("reviewyear")
+        reviewyear = request.form.getlist("reviewyear1") + request.form.getlist("reviewyear2") + request.form.getlist("reviewyear3") + request.form.getlist("reviewyear4")
 
         result1 = len(nokidszone)*len(booking)/math.gcd(len(nokidszone), len(booking))
         result2 = result1*len(reviewyear)/math.gcd(int(result1), len(reviewyear))
